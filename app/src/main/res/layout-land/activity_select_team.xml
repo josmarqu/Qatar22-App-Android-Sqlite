@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectTeam">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/sel_team"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintWidth_min="630dp">
+
+        <Button
+            android:id="@+id/btnArg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/argentinaflag"
+            android:padding="0dp"
+            android:text="@string/btnArg"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnAus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/australiaflag"
+            android:padding="0dp"
+            android:text="@string/btnAus"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnBlg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/belgiumflag"
+            android:padding="0dp"
+            android:text="@string/btnBlg"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnBrz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/brazilflag"
+            android:padding="0dp"
+            android:text="@string/btnBrz"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnCmr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/cameroonflag"
+            android:padding="0dp"
+            android:text="@string/btnCmr"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnCnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/canadaflag"
+            android:padding="0dp"
+            android:text="@string/btnCnd"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnCstRc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/costaricaflag"
+            android:padding="0dp"
+            android:text="@string/btnCstRc"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnCrc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/croatiaflag"
+            android:padding="0dp"
+            android:text="@string/btnCrc"
+            android:textSize="6sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_min="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintWidth_min="630dp">
+
+        <Button
+            android:id="@+id/btnDnmk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/denmarkflag"
+            android:padding="0dp"
+            android:text="@string/btnDnmk"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnEcd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/ecuadorflag"
+            android:padding="0dp"
+            android:text="@string/btnEcd"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnEng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/englandflag"
+            android:padding="0dp"
+            android:text="@string/btnEng"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnFr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/franceflag"
+            android:padding="0dp"
+            android:text="@string/btnFr"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnGrm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/germanyflag"
+            android:padding="0dp"
+            android:text="@string/btnGrm"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnGh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/ghanaflag"
+            android:padding="0dp"
+            android:text="@string/btnGh"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnJp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/japanflag"
+            android:padding="0dp"
+            android:text="@string/btnJp"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnIr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/iranflag"
+            android:padding="0dp"
+            android:text="@string/btnIr"
+            android:textSize="6sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_min="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintWidth_min="630dp">
+
+        <Button
+            android:id="@+id/btnMx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/mexicoflag"
+            android:padding="0dp"
+            android:text="@string/btnMx"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnMor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/moroccoflag"
+            android:padding="0dp"
+            android:text="@string/btnMor"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnNth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/netherlandsflag"
+            android:padding="0dp"
+            android:text="@string/btnNth"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnPl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/polandflag"
+            android:padding="0dp"
+            android:text="@string/btnPl"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnPrt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/portugalflag"
+            android:padding="0dp"
+            android:text="@string/btnPrt"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnQt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/qatarflag"
+            android:padding="0dp"
+            android:text="@string/btnQt"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnSdar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/saudiarabiaflag"
+            android:padding="0dp"
+            android:text="@string/btnSdar"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnSn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/senegalflag"
+            android:padding="0dp"
+            android:text="@string/btnSn"
+            android:textSize="6sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="155dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/red"
+        android:text="@string/btnAccept"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btnAccept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_min="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+        app:layout_constraintWidth_min="630dp">
+
+        <Button
+            android:id="@+id/btnSrb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/serbiaflag"
+            android:padding="0dp"
+            android:text="@string/btnSrb"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnStk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/southkoreaflag"
+            android:padding="0dp"
+            android:text="@string/btnStk"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnSp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/spainflag"
+            android:padding="0dp"
+            android:text="@string/btnSp"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnSwz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/switzerlandflag"
+            android:padding="0dp"
+            android:text="@string/btnSwz"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnTn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/tunisiaflag"
+            android:padding="0dp"
+            android:text="@string/btnTn"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnEeuu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/eeuuflag"
+            android:padding="0dp"
+            android:text="@string/btnEeuu"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnUrg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/uruguayflag"
+            android:padding="0dp"
+            android:text="@string/btnUrg"
+            android:textSize="6sp" />
+
+        <Button
+            android:id="@+id/btnWal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:drawableLeft="@drawable/walesflag"
+            android:padding="0dp"
+            android:text="@string/btnWal"
+            android:textSize="6sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
