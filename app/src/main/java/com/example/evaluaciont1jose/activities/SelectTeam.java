@@ -1,21 +1,17 @@
-package com.example.evaluaciont1jose;
+package com.example.evaluaciont1jose.activities;
 
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.VectorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.evaluaciont1jose.R;
 
 public class SelectTeam extends AppCompatActivity implements View.OnClickListener {
     Resources res;

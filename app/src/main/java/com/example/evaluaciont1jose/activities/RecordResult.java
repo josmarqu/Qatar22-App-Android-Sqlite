@@ -1,9 +1,6 @@
-package com.example.evaluaciont1jose;
-
-import static com.example.evaluaciont1jose.R.id.btnAccept;
+package com.example.evaluaciont1jose.activities;
 
 
-import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -27,6 +24,9 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.evaluaciont1jose.R;
+import com.example.evaluaciont1jose.dbManager.DbManager;
 
 import java.util.Calendar;
 
@@ -171,12 +171,8 @@ public class RecordResult extends AppCompatActivity {
     }
 
     private void storeData() {
-        String phase = txtPhase.getText().toString();
-        String fecha = txtDate.getText().toString();
-        String goalTmHm = String.valueOf(nmbPickerHomeTm.getValue());
-        String goalTmAw = String.valueOf(nmbPickerAwayTm.getValue());
-        String TmHm = btnHomeTm.getText().toString();
-        String TmAw = btnAwayTm.getText().toString();
+        DbManager dbManager = new DbManager(this);
+        dbManager.connection();
     }
 
     private void emptyFields() {

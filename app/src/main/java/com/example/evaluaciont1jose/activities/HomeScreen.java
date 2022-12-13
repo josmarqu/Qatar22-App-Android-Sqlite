@@ -1,4 +1,4 @@
-package com.example.evaluaciont1jose;
+package com.example.evaluaciont1jose.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.evaluaciont1jose.R;
 
 public class HomeScreen extends AppCompatActivity {
     Button btnRecRs;

@@ -1,6 +1,5 @@
-package com.example.evaluaciont1jose;
+package com.example.evaluaciont1jose.activities;
 
-import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -18,6 +17,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.evaluaciont1jose.R;
+import com.example.evaluaciont1jose.entities.Result;
+import com.example.evaluaciont1jose.entities.ResultList;
+
+import java.util.ArrayList;
+
 public class CheckResult extends AppCompatActivity {
     Resources res;
     String BTN_SELECT;
@@ -27,6 +32,8 @@ public class CheckResult extends AppCompatActivity {
     Drawable image;
     String ctry;
     int strId;
+    int ctrfd = 0;
+    int pos = 0;
 
     private final ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -37,7 +44,7 @@ public class CheckResult extends AppCompatActivity {
                     btnSelect.setCompoundDrawables(image, null, null, null);
                     btnSelect.setTextSize(9);
                     btnSelect.setText(result.getData().getStringExtra(RecordResult.KEY_COUNTRY_SELECTED));
-                    ctry = String.valueOf(btnSelect.getText());
+                    ctry = String.valueOf(btnSelect.getText()).trim().toLowerCase();
                     FragmentManager fm = getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
 
@@ -50,31 +57,48 @@ public class CheckResult extends AppCompatActivity {
             });
 
     private void fillFrameLayouts(FragmentTransaction ft) {
-        for (int i = 0; i < ResultList.getResult(ctry).size(); i++) {
-            fr = new FragmentResults().newInstance(ctry, i);
-            switch (i) {
-                case 0:
-                    ft.add(R.id.frameLayout1, fr);
-                    break;
-                case 1:
-                    ft.add(R.id.frameLayout2, fr);
-                    break;
-                case 2:
-                    ft.add(R.id.frameLayout3, fr);
-                    break;
-                case 3:
-                    ft.add(R.id.frameLayout3, fr);
-                    break;
-                case 4:
-                    ft.add(R.id.frameLayout5, fr);
-                    break;
-                case 5:
-                    ft.add(R.id.frameLayout6, fr);
-                    break;
-                case 6:
-                    ft.add(R.id.frameLayout7, fr);
-                    break;
+        ResultList resultList = new ResultList();
+        ArrayList<Result> listRes = new ArrayList<Result>();
+        listRes = resultList.getListRes();
+
+        for (Result res: listRes) {
+            if (res.getTeamHm().trim().toLowerCase().equals(ctry)) {
+                setTxtFrameLayout(ft);
+                ctrfd++;
+            } else if (res.getTeamAw().trim().toLowerCase().equals(ctry)) {
+                setTxtFrameLayout(ft);
+                ctrfd++;
             }
+            pos++;
+        }
+        pos = 0;
+        ctrfd = 0;
+    }
+
+    private void setTxtFrameLayout(FragmentTransaction ft) {
+        fr = new FragmentResults().newInstance(pos);
+        switch (ctrfd) {
+            case 0:
+                ft.add(R.id.frameLayout1, fr);
+                break;
+            case 1:
+                ft.add(R.id.frameLayout2, fr);
+                break;
+            case 2:
+                ft.add(R.id.frameLayout3, fr);
+                break;
+            case 3:
+                ft.add(R.id.frameLayout4, fr);
+                break;
+            case 4:
+                ft.add(R.id.frameLayout5, fr);
+                break;
+            case 5:
+                ft.add(R.id.frameLayout6, fr);
+                break;
+            case 6:
+                ft.add(R.id.frameLayout7, fr);
+                break;
         }
     }
 
@@ -96,6 +120,7 @@ public class CheckResult extends AppCompatActivity {
             }
         });
         if (savedInstanceState != null) {
+            emptyFields();
             btnSelect.setText(savedInstanceState.getString("btnSelect"));
             if (!btnSelect.getText().equals(BTN_SELECT)) {
                 strId = getStringIdentifier(this, String.valueOf(btnSelect.getText()));
@@ -103,12 +128,6 @@ public class CheckResult extends AppCompatActivity {
                 btnSelect.setCompoundDrawables(image, null, null, null);
                 btnSelect.setTextSize(9);
             }
-            /*
-            ctry = String.valueOf(btnSelect.getText());
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            fillFrameLayouts(ft);
-             */
         }
 
     }

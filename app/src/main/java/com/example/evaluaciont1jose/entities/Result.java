@@ -1,6 +1,8 @@
-package com.example.evaluaciont1jose;
+package com.example.evaluaciont1jose.entities;
 
-public class Result {
+import java.io.Serializable;
+
+public class Result implements Serializable {
     private String phase;
     private String date;
     private String teamHm;
@@ -28,6 +30,8 @@ public class Result {
                 ", Goals Team Away = " + goaltmAw;
     }
 
+    public Result() {}
+
     public String getTeamHm() {
         return teamHm;
     }
@@ -50,5 +54,17 @@ public class Result {
 
     public int getGoaltmAw() {
         return goaltmAw;
+    }
+
+    public void setTeamHm(String teamHm) {
+        this.teamHm = teamHm;
+    }
+
+    public void setTeamAw(String teamAw) {
+        this.teamAw = teamAw;
+    }
+
+    public void setPhase(String phase) {
+        this.phase = phase;
     }
 }

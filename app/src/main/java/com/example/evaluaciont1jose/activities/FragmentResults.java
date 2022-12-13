@@ -1,4 +1,4 @@
-package com.example.evaluaciont1jose;
+package com.example.evaluaciont1jose.activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -9,25 +9,27 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
+import com.example.evaluaciont1jose.R;
+import com.example.evaluaciont1jose.entities.Result;
+import com.example.evaluaciont1jose.entities.ResultList;
 
 public class FragmentResults extends Fragment {
+    ResultList resultList;
+    Result res;
     TextView textViewPhaseFrag;
     TextView txtViewDate;
     TextView textViewTmHm;
     TextView textViewTmAw;
     TextView textViewGoalTmHm;
     TextView textViewGoalTmAw;
-    String resCtry;
-    int resNb;
+    int pos;
 
 
-    public static FragmentResults newInstance(String ctry, int res) {
+    public static FragmentResults newInstance(int pos) {
         FragmentResults fr = new FragmentResults();
 
         Bundle args = new Bundle();
-        args.putString("ctry", ctry);
-        args.putInt("res", res);
+        args.putInt("pos", pos);
         fr.setArguments(args);
 
         return fr;
@@ -36,8 +38,11 @@ public class FragmentResults extends Fragment {
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        resCtry = getArguments().getString("ctry");
-        resNb = getArguments().getInt("res");
+        resultList = new ResultList();
+        pos = getArguments().getInt("pos");
+        res = resultList.getResult(pos);
+
+
         View v = inflater.inflate(R.layout.fragment, container, false);
         textViewPhaseFrag= v.findViewById(R.id.textViewPhaseFrag);
         txtViewDate = v.findViewById(R.id.txtViewDate);
@@ -46,15 +51,14 @@ public class FragmentResults extends Fragment {
         textViewGoalTmHm = v.findViewById(R.id.textViewGoalTmHm);
         textViewGoalTmAw= v.findViewById(R.id.textViewGoalTmAw);
 
-        ArrayList<Result> res = ResultList.getResult(resCtry);
 
-        textViewPhaseFrag.setText(res.get(resNb).getPhase());
-        txtViewDate.setText(res.get(resNb).getDate());
-        textViewTmHm.setText(res.get(resNb).getTeamHm());
-        textViewGoalTmHm.setText(String.valueOf(res.get(resNb).getGoaltmHm()));
-        textViewTmAw.setText(res.get(resNb).getTeamAw());
-        textViewGoalTmAw.setText(String.valueOf(res.get(resNb).getGoaltmAw()));
 
+        textViewPhaseFrag.setText(res.getPhase());
+        txtViewDate.setText(res.getDate());
+        textViewTmHm.setText(res.getTeamHm());
+        textViewGoalTmHm.setText(String.valueOf(res.getGoaltmHm()));
+        textViewTmAw.setText(res.getTeamAw());
+        textViewGoalTmAw.setText(String.valueOf(res.getGoaltmAw()));
         return v;
     }
 }

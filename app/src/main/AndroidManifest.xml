@@ -13,28 +13,28 @@
         android:theme="@style/Theme.EvaluacionT1Jose"
         tools:targetApi="31">
         <activity
-            android:name=".CheckResult"
+            android:name=".activities.CheckResult"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SelectTeam"
+            android:name=".activities.SelectTeam"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RecordResult"
+            android:name=".activities.RecordResult"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".HomeScreen"
+            android:name=".activities.HomeScreen"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"></category>
