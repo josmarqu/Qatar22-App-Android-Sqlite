@@ -48,11 +48,11 @@ public class Result implements Serializable {
         return date;
     }
 
-    public int getGoaltmHm() {
+    public int getGoalTmHm() {
         return goaltmHm;
     }
 
-    public int getGoaltmAw() {
+    public int getGoalTmAw() {
         return goaltmAw;
     }
 

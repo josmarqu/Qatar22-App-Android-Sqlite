@@ -20,6 +20,8 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.R;
+import com.dbManager.DbManager;
+
 import java.util.Calendar;
 
 public class RecordResult extends AppCompatActivity {
@@ -188,10 +190,8 @@ public class RecordResult extends AppCompatActivity {
             - QUARTER FINAL CANT BE STORED MORE THAN FOUR TIMES IN THE TABLE
             - OCTAVOS CANT BE STORED MORE THAN EIGHT TIMES IN THE TABLE
          */
-        /*
+
         DbManager dbManager = new DbManager(this);
-        dbManager.connection();
-         */
     }
 
     private void emptyFields() {
