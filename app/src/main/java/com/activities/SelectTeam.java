@@ -28,24 +28,6 @@ public class SelectTeam extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_team);
         initButtons();
-        savedInstate(savedInstanceState);
-    }
-
-    private void savedInstate(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            btn = findViewById(savedInstanceState.getInt("btnId"));
-            btn.setBackgroundColor(getResources().getColor(R.color.green));
-            firstButtonClick = false;
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        if (btn != null)
-        {
-            outState.putInt("btnId", btn.getId());
-        }
     }
 
     private void initButtons() {
@@ -71,8 +53,6 @@ public class SelectTeam extends AppCompatActivity implements View.OnClickListene
         Arrays.stream(buttonIds).mapToObj(id -> (Button) findViewById(id)).forEach(button -> button.setOnClickListener(this));
     }
 
-    @SuppressLint("ResourceAsColor")
-    @Override
     public void onClick(View v) {
         Button btn = (Button) findViewById(v.getId());
         if (firstButtonClick) {

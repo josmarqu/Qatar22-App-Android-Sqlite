@@ -5,73 +5,46 @@
     android:layout_height="wrap_content"
     tools:context=".activities.FragmentResults">
 
-
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        style="@style/tbRowFl">
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal">
-
+            style="@style/tbRowFl"
+            >
             <TextView
                 android:id="@+id/textViewPhaseFrag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="" />
-
             <TextView
                 android:id="@+id/txtViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.4"
+                android:layout_weight="1"
                 android:text="" />
         </TableRow>
-
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            style="@style/tbRowFl">
             <TextView
                 android:id="@+id/textViewTmHm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
-
+                style="@style/txtFl"
+                ></TextView>
             <TextView
                 android:id="@+id/textViewGoalTmHm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
-
+                style="@style/txtFl"
+                ></TextView>
             <TextView
                 android:id="@+id/textViewHyphen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:text="@string/textHyphen" />
-
+                style="@style/txtFl"
+                ></TextView>
             <TextView
                 android:id="@+id/textViewTmAw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
-
+                style="@style/txtFl"
+                ></TextView>
             <TextView
                 android:id="@+id/textViewGoalTmAw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
+                style="@style/txtFl"
+                ></TextView>
         </TableRow>
-
     </TableLayout>
-
-
 </FrameLayout>

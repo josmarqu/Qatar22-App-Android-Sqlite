@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import com.R;
+import com.dbManager.DbManager;
 import com.entities.Result;
 
 public class FragmentResults extends Fragment {
-    Result res;
     TextView textViewPhaseFrag;
     TextView txtViewDate;
     TextView textViewTmHm;
@@ -20,10 +20,11 @@ public class FragmentResults extends Fragment {
     TextView textViewGoalTmAw;
 
 
-    public static FragmentResults newInstance(String country) {
+    public static FragmentResults newInstance(String country, int matchNb) {
         FragmentResults fr = new FragmentResults();
         Bundle args = new Bundle();
         args.putString("country", country);
+        args.putInt("matchNb", matchNb);
         fr.setArguments(args);
         return fr;
     }
@@ -32,10 +33,10 @@ public class FragmentResults extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         String country = getArguments().getString("country");
+        int matchNb = getArguments().getInt("matchNb");
 
-        //TODO: IMPLEMENT DATABASE CALL TO GET THE RESULTS OF THE COUNTRY
-        //res = resultList.getResult();
-
+        DbManager dbManager = new DbManager(getContext());
+        Result res = dbManager.getResult(country, matchNb);
 
         View v = inflater.inflate(R.layout.fragment, container, false);
         textViewPhaseFrag= v.findViewById(R.id.textViewPhaseFrag);
@@ -45,14 +46,12 @@ public class FragmentResults extends Fragment {
         textViewGoalTmHm = v.findViewById(R.id.textViewGoalTmHm);
         textViewGoalTmAw= v.findViewById(R.id.textViewGoalTmAw);
 
-
-
         textViewPhaseFrag.setText(res.getPhase());
         txtViewDate.setText(res.getDate());
         textViewTmHm.setText(res.getTeamHm());
-        textViewGoalTmHm.setText(String.valueOf(res.getGoaltmHm()));
+        textViewGoalTmHm.setText(String.valueOf(res.getGoalTmHm()));
         textViewTmAw.setText(res.getTeamAw());
-        textViewGoalTmAw.setText(String.valueOf(res.getGoaltmAw()));
+        textViewGoalTmAw.setText(String.valueOf(res.getGoalTmAw()));
         return v;
     }
 }

@@ -56,15 +56,27 @@ public class Result implements Serializable {
         return goaltmAw;
     }
 
+    public void setPhase(String phase) {
+        this.phase = phase;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public void setTeamHm(String teamHm) {
         this.teamHm = teamHm;
+    }
+
+    public void setGoaltmHm(int goaltmHm) {
+        this.goaltmHm = goaltmHm;
     }
 
     public void setTeamAw(String teamAw) {
         this.teamAw = teamAw;
     }
 
-    public void setPhase(String phase) {
-        this.phase = phase;
+    public void setGoaltmAw(int goaltmAw) {
+        this.goaltmAw = goaltmAw;
     }
 }

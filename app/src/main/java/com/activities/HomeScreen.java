@@ -31,7 +31,7 @@ public class HomeScreen extends AppCompatActivity {
             startActivity(intent);
         });
         btnChkRs.setOnClickListener((v) -> {
-            Intent intent = new Intent(HomeScreen.this, RecordResult.class);
+            Intent intent = new Intent(HomeScreen.this, CheckResult.class);
             startActivity(intent);
         });
     }

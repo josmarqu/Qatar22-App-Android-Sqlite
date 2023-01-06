@@ -8,6 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.R;
+import com.dbManager.DbManager;
 import com.entities.Result;
 
 import java.util.ArrayList;
@@ -34,79 +37,55 @@ public class CheckResult extends AppCompatActivity {
                     btnSelect.setTextSize(9);
                     btnSelect.setText(result.getData().getStringExtra(RecordResult.KEY_COUNTRY_SELECTED));
                     String country = String.valueOf(btnSelect.getText()).trim().toLowerCase();
-                    /*TODO: Give nbMatchesFd a value calling Dbmanager and obtaining the result of a query that count
-                        the number of results found using country String
-                     */
-                    FragmentManager fm = getSupportFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    //fillFrameLayouts(ft, country, nbMatchesFd);
-                    ft.addToBackStack(null);
-                    ft.commit();
+                    DbManager db = new DbManager(this);
+                    int nbMatchesFd = db.countResultsByCountry(country);
+                    if (nbMatchesFd < 0) {
+                        Toast.makeText(CheckResult.this, R.string.error + getString(R.string.searchError), Toast.LENGTH_LONG);
+                    } else {
+                        FragmentManager fm = getSupportFragmentManager();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        fillFrameLayouts(ft, country, nbMatchesFd);
+                        ft.addToBackStack(null);
+                        ft.commit();
+                    }
                 }
             });
 
     private void fillFrameLayouts(FragmentTransaction ft, String country, int nbMatchesFd) {
-        /*TODO: Fill the Fragments using the class FragmentResults with the country argument sent
-            and the number of the match to show
-         */
-
-        //FragmentResults fr = new FragmentResults().newInstance(country, nbMatch);
-
-        /*
-        switch (ctrfd) {
-            case 0:
-                ft.add(R.id.frameLayout1, fr);
-                break;
-            case 1:
-                ft.add(R.id.frameLayout2, fr);
-                break;
-            case 2:
-                ft.add(R.id.frameLayout3, fr);
-                break;
-            case 3:
-                ft.add(R.id.frameLayout4, fr);
-                break;
-            case 4:
-                ft.add(R.id.frameLayout5, fr);
-                break;
-            case 5:
-                ft.add(R.id.frameLayout6, fr);
-                break;
-            case 6:
-                ft.add(R.id.frameLayout7, fr);
-                break;
+        for (int i = 0; i < nbMatchesFd; i++) {
+            FragmentResults fr = new FragmentResults().newInstance(country, i);
+            switch (i) {
+                case 0:
+                    ft.add(R.id.frameLayout1, fr);
+                    break;
+                case 1:
+                    ft.add(R.id.frameLayout2, fr);
+                    break;
+                case 2:
+                    ft.add(R.id.frameLayout3, fr);
+                    break;
+                case 3:
+                    ft.add(R.id.frameLayout4, fr);
+                    break;
+                case 4:
+                    ft.add(R.id.frameLayout5, fr);
+                    break;
+                case 5:
+                    ft.add(R.id.frameLayout6, fr);
+                    break;
+                case 6:
+                    ft.add(R.id.frameLayout7, fr);
+                    break;
+            }
         }
-         */
     }
 
-    @SuppressLint("MissingInflatedId")
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_result);
         initGlobal();
         initButtons();
         initFrLayouts();
-        savedInstate(savedInstanceState);
-    }
-
-    private void savedInstate(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            emptyFields();
-            btnSelect.setText(savedInstanceState.getString("btnSelect"));
-            if (!btnSelect.getText().equals(txtBtnSelect)) {
-                int strId = getStringIdentifier(this, String.valueOf(btnSelect.getText()));
-                Drawable image = getImageBtn(strId);
-                btnSelect.setCompoundDrawables(image, null, null, null);
-                btnSelect.setTextSize(9);
-            }
-        }
-    }
-
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("btnSelect", String.valueOf(btnSelect.getText()));
-
     }
 
     private void initGlobal() {

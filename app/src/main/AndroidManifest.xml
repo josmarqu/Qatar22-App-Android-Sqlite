@@ -10,32 +10,36 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EvaluacionT1Jose"
+        android:theme="@style/Theme.Qatar2022"
         tools:targetApi="31">
         <activity
-            android:name=".activities.CheckResult"
-            android:exported="false">
+            android:name="com.activities.CheckResult"
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.SelectTeam"
-            android:exported="false">
+            android:name="com.activities.SelectTeam"
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.RecordResult"
-            android:exported="false">
+            android:name="com.activities.RecordResult"
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.HomeScreen"
-            android:exported="true">
+            android:name="com.activities.HomeScreen"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
@@ -44,5 +48,4 @@
                 android:value="" />
         </activity>
     </application>
-
 </manifest>

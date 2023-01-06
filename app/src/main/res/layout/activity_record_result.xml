@@ -33,24 +33,16 @@
 
         <Button
             android:id="@+id/btnCldr"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/red"
+            style="@style/btnDatePhase"
             android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
             android:text="@string/btnCldr"
             />
 
-        <EditText
+        <TextView
+            style="@style/txtDatePhase"
             android:id="@+id/txtDate"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="date"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:hint="@string/txtDate"/>
+            android:hint= "@string/txtDate"
+            />
 
     </LinearLayout>
 
@@ -68,24 +60,15 @@
 
         <Button
             android:id="@+id/btnPhase"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/red"
+            style="@style/btnDatePhase"
             android:drawableLeft="@drawable/ic_baseline_stadium_24"
             android:text="@string/btnPhase" />
 
         <TextView
+            style="@style/txtDatePhase"
             android:id="@+id/txtPhase"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:capitalize="none"
-            android:textSize="18sp"
-            android:text=""
             android:hint= "@string/txtPhase"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+         />
     </LinearLayout>
 
     <LinearLayout
@@ -102,10 +85,7 @@
 
         <Button
             android:id="@+id/btnHomeTm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/red"
+            style="@style/btnTm"
             android:text="@string/btnHomeTm" />
 
         <NumberPicker
@@ -127,10 +107,7 @@
 
         <Button
             android:id="@+id/btnAwayTm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/red"
+            style="@style/btnTm"
             android:text="@string/btnAwayTm" />
 
     </LinearLayout>
@@ -165,10 +142,7 @@
 
         <Button
             android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/red"
-            android:layout_weight="1"
+            style="@style/btnSaveReset"
             android:text="@string/btnSave" />
 
         <Space
@@ -178,10 +152,7 @@
 
         <Button
             android:id="@+id/btnReset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/red"
-            android:layout_weight="1"
+            style="@style/btnSaveReset"
             android:text="@string/btnReset" />
     </LinearLayout>
 

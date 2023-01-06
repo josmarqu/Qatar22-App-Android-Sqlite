@@ -36,10 +36,7 @@
 
         <Button
             android:id="@+id/btnRecRes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/red"
+            style="@style/btnHomeScreen"
             android:text="@string/btnRecRes" />
 
         <Space
@@ -49,10 +46,7 @@
 
         <Button
             android:id="@+id/btnChkRes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/red"
+            style="@style/btnHomeScreen"
             android:text="@string/btnChkRes" />
     </LinearLayout>
 

@@ -21,6 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.R;
 import com.dbManager.DbManager;
+import com.entities.Result;
+
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -36,7 +40,7 @@ public class RecordResult extends AppCompatActivity {
     private Button btnPhase;
     private Button btnReset;
     private Button btnSave;
-    private EditText txtDate;
+    private TextView txtDate;
     private TextView txtPhase;
     private NumberPicker nmbPickerHomeTm;
     private NumberPicker nmbPickerAwayTm;
@@ -76,7 +80,6 @@ public class RecordResult extends AppCompatActivity {
         setContentView(R.layout.activity_record_result);
         initWidgets();
         initGlobals();
-        savedInstate(savedInstanceState);
     }
 
     private void initWidgets() {
@@ -132,7 +135,6 @@ public class RecordResult extends AppCompatActivity {
             }
             else {
                 storeData();
-                Toast.makeText(RecordResult.this, R.string.recResValData, Toast.LENGTH_SHORT).show();
                 emptyFields();
             }
         });
@@ -145,53 +147,18 @@ public class RecordResult extends AppCompatActivity {
         phases = res.getStringArray(R.array.phases);
     }
 
-    private void savedInstate(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            txtDate.setText(savedInstanceState.getString("txtDate"));
-            txtPhase.setText(savedInstanceState.getString("txtPhase"));
-            nmbPickerHomeTm.setValue(savedInstanceState.getInt("nmbPickerHomeTm"));
-            nmbPickerAwayTm.setValue(savedInstanceState.getInt("nmbPickerAwayTm"));
-            btnHomeTm.setText(savedInstanceState.getString("btnHomeTm"));
-            btnAwayTm.setText(savedInstanceState.getString("btnAwayTm"));
-            Drawable image;
-            int strId;
-            if (!btnHomeTm.getText().equals(VALUE_TEAMHM_SELECTED)) {
-                strId = getStringIdentifier(this, String.valueOf(btnHomeTm.getText()));
-                image = getImageBtn(strId);
-                btnHomeTm.setCompoundDrawables(image, null, null, null);
-                btnHomeTm.setTextSize(9);
-            }
-            if (!btnAwayTm.getText().equals(VALUE_TEAMAW_SELECTED)) {
-                strId = getStringIdentifier(this, String.valueOf(btnAwayTm.getText()));
-                image = getImageBtn(strId);
-                btnAwayTm.setCompoundDrawables(image, null, null, null);
-                btnAwayTm.setTextSize(9);
-            }
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("txtDate", String.valueOf(txtDate.getText()));
-        outState.putString("txtPhase", String.valueOf(txtPhase.getText()));
-        outState.putInt("nmbPickerHomeTm", nmbPickerHomeTm.getValue());
-        outState.putInt("nmbPickerAwayTm", nmbPickerAwayTm.getValue());
-        outState.putString("btnHomeTm", String.valueOf(btnHomeTm.getText()));
-        outState.putString("btnAwayTm", String.valueOf(btnAwayTm.getText()));
-    }
-
     private void storeData() {
-        /*TODO: STORE THE RESULT CHECKING
-            - TEAM CANT HAVE MORE THAN 3 MATCHES IN GROUP STAGE PHASE
-            - TEAM CAN HAVE ONLY ONE OCTAVOS, QUARTER ,SEMI , FINAL
-            - FINAL CANT BE STORED MORE THAN ONE TIME IN THE TABLE
-            - SEMIFINAL CANT BE STORED MORE THAN TWO TIMES IN THE TABLE
-            - QUARTER FINAL CANT BE STORED MORE THAN FOUR TIMES IN THE TABLE
-            - OCTAVOS CANT BE STORED MORE THAN EIGHT TIMES IN THE TABLE
-         */
+        Result result = new Result(String.valueOf(txtPhase.getText()), String.valueOf(txtDate.getText()),
+                String.valueOf(btnHomeTm.getText()), nmbPickerHomeTm.getValue(), String.valueOf(btnAwayTm.getText()),
+                nmbPickerAwayTm.getValue());
+        DbManager db = new DbManager(this);
+        try {
+            db.insertResult(result);
+            Toast.makeText(RecordResult.this, R.string.recResValData, Toast.LENGTH_SHORT).show();
+        } catch (IllegalArgumentException e) {
+            Toast.makeText(RecordResult.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
-        DbManager dbManager = new DbManager(this);
     }
 
     private void emptyFields() {
@@ -248,5 +215,4 @@ public class RecordResult extends AppCompatActivity {
     public static int getStringIdentifier(Context context, String name) {
         return context.getResources().getIdentifier(name + "flag", "drawable", context.getPackageName());
     }
-
 }
