@@ -31,16 +31,16 @@ public class CheckResult extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getData()!= null) {
                     emptyFields();
-                    int strId = getStringIdentifier(this, result.getData().getStringExtra(RecordResult.KEY_COUNTRY_SELECTED));
+                    int strId = getStringIdentifier(this, result.getData().getStringExtra(RecordResult.KEY_COUNTRY_SELECTED).toLowerCase());
                     Drawable image = getImageBtn(strId);
                     btnSelect.setCompoundDrawables(image, null, null, null);
                     btnSelect.setTextSize(9);
                     btnSelect.setText(result.getData().getStringExtra(RecordResult.KEY_COUNTRY_SELECTED));
-                    String country = String.valueOf(btnSelect.getText()).trim().toLowerCase();
+                    String country = String.valueOf(btnSelect.getText());
                     DbManager db = new DbManager(this);
                     int nbMatchesFd = db.countResultsByCountry(country);
-                    if (nbMatchesFd < 0) {
-                        Toast.makeText(CheckResult.this, R.string.error + getString(R.string.searchError), Toast.LENGTH_LONG);
+                    if (nbMatchesFd == 0) {
+                        Toast.makeText(this, getString(R.string.error) + getString(R.string.searchError), Toast.LENGTH_LONG).show();
                     } else {
                         FragmentManager fm = getSupportFragmentManager();
                         FragmentTransaction ft = fm.beginTransaction();

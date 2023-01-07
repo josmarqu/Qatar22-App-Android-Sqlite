@@ -14,8 +14,6 @@ public class DbManager extends SQLiteOpenHelper {
     private static final String DB_NAME = "Qatar2022.db";
     private static final int DB_VERSION = 1;
     private Context context;
-    private SQLiteDatabase rdb;
-    private SQLiteDatabase wdb;
 
     // Result Table
     private static final String TABLE_NAME = "Result";
@@ -63,16 +61,18 @@ public class DbManager extends SQLiteOpenHelper {
             COLUMN_TEAMHM + "= ? OR " +
             COLUMN_TEAMAW + "= ?) " +
             "LIMIT 1 OFFSET ?";
+    private final String DROP_TABLE = "DROP TABLE " + TABLE_NAME;
 
 
     public DbManager(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
+        createTableIfNoExists();
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
+    private void createTableIfNoExists() {
         if (!checkTableExists()) {
+            SQLiteDatabase db = getWritableDatabase();
             db.execSQL(CREATE_TABLE);
             System.out.println("TABLE CREATED SUCCESSFULLY");
         } else {
@@ -80,19 +80,22 @@ public class DbManager extends SQLiteOpenHelper {
         }
     }
 
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+    }
+
     private boolean checkTableExists() {
-        rdb = getReadableDatabase();
-        Cursor cursor = rdb.rawQuery(CHECK_TABLE_EXISTS, null);
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(CHECK_TABLE_EXISTS, null);
         boolean exists = (cursor.getCount() > 0);
         cursor.close();
         return exists;
     }
 
     public void insertResult(Result result) {
-        rdb = getReadableDatabase();
-        wdb = getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         checkValidResult(result.getTeamHm(), result.getTeamAw(), result.getPhase());
-        SQLiteStatement statement = wdb.compileStatement(INSERT_RESULT);
+        SQLiteStatement statement = db.compileStatement(INSERT_RESULT);
         statement.bindString(1, result.getPhase());
         statement.bindString(2, result.getDate());
         statement.bindString(3, result.getTeamHm());
@@ -159,7 +162,8 @@ public class DbManager extends SQLiteOpenHelper {
     }
 
     private int countResultsByCountryInPhase(String phase, String country) {
-        Cursor cursor = rdb.rawQuery(COUNT_RESULTS_BY_TEAM_IN_PHASE, new String[]{phase, country, country});
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery(COUNT_RESULTS_BY_TEAM_IN_PHASE, new String[]{phase, country, country});
         cursor.moveToFirst();
         int count = cursor.getInt(0);
         cursor.close();
@@ -168,7 +172,8 @@ public class DbManager extends SQLiteOpenHelper {
     }
 
     private int countResultsByPhase(String phase) {
-        Cursor cursor = rdb.rawQuery(COUNT_RESULTS_BY_PHASE, new String[]{phase});
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery(COUNT_RESULTS_BY_PHASE, new String[]{phase});
         cursor.moveToFirst();
         int count = cursor.getInt(0);
         cursor.close();
@@ -177,8 +182,9 @@ public class DbManager extends SQLiteOpenHelper {
     }
 
     public int countResultsByCountry(String country) {
-        rdb = getReadableDatabase();
-        Cursor cursor = rdb.rawQuery(COUNT_RESULTS_BY_TEAM, new String[]{country});
+        SQLiteDatabase db = getWritableDatabase();
+        db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(COUNT_RESULTS_BY_TEAM, new String[]{country});
         cursor.moveToFirst();
         int count = cursor.getInt(0);
         cursor.close();
@@ -187,9 +193,11 @@ public class DbManager extends SQLiteOpenHelper {
     }
 
     public Result getResult(String country, int matchNb) {
-        rdb = getReadableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
+        db = getReadableDatabase();
         String[] selectionArgs = {country, country, String.valueOf(matchNb)};
-        Cursor cursor = rdb.rawQuery(GET_RESULT, selectionArgs);
+        Cursor cursor = db.rawQuery(GET_RESULT, selectionArgs);
+        cursor.moveToFirst();
         Result result = new Result();
         result.setPhase(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PHASE)));
         result.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
@@ -211,6 +219,13 @@ public class DbManager extends SQLiteOpenHelper {
         }
     }
 
+    public void restoreData() {
+        if (checkTableExists()){
+            SQLiteDatabase db = getWritableDatabase();
+            db = getWritableDatabase();
+            db.execSQL("DROP TABLE Result");
+        }
+    }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
     }

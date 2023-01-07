@@ -27,6 +27,7 @@ import com.entities.Result;
 import org.w3c.dom.Text;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class RecordResult extends AppCompatActivity {
     public static String KEY_COUNTRY_SELECTED = "country";
@@ -51,13 +52,13 @@ public class RecordResult extends AppCompatActivity {
                 Drawable image;
                 if (result.getData()!= null) {
                     if (result.getData().getStringExtra(KEY_TEAM_SELECTED).equals(VALUE_TEAMHM_SELECTED)) {
-                        strId = getStringIdentifier(this, result.getData().getStringExtra(KEY_COUNTRY_SELECTED));
+                        strId = getStringIdentifier(this, result.getData().getStringExtra(KEY_COUNTRY_SELECTED).toLowerCase());
                         image = getImageBtn(strId);
                         btnHomeTm.setCompoundDrawables(image, null, null, null);
                         btnHomeTm.setTextSize(9);
                         btnHomeTm.setText(result.getData().getStringExtra(KEY_COUNTRY_SELECTED));
                     } else if (result.getData().getStringExtra(KEY_TEAM_SELECTED).equals(VALUE_TEAMAW_SELECTED)) {
-                        strId = getStringIdentifier(this, result.getData().getStringExtra(KEY_COUNTRY_SELECTED));
+                        strId = getStringIdentifier(this, result.getData().getStringExtra(KEY_COUNTRY_SELECTED).toLowerCase());
                         image = getImageBtn(strId);
                         btnAwayTm.setCompoundDrawables(image, null, null, null);
                         btnAwayTm.setTextSize(9);

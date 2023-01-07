@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="phases">
-        <item>group stage</item>
-        <item>round of sixteen</item>
-        <item>quarterfinal</item>
-        <item>semifinal</item>
-        <item>final</item>
+        <item>Group stage</item>
+        <item>Round of sixteen</item>
+        <item>Quarterfinal</item>
+        <item>Semifinal</item>
+        <item>Final</item>
     </string-array>
 </resources>
 
