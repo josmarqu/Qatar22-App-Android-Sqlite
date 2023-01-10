@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_delete_forever_24"
-        android:background="@color/white"
+        android:background="@android:color/transparent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
