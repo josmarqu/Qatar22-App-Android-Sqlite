@@ -1,6 +1,5 @@
 # Qatar2022 Results App
-The Qatar2022 Results App allows users to record results of the 2022 Soccer World Cup in Qatar. 
-The application make use of a sqlite database, which add the funcionality to see the saved results by country.
+An Android app that utilizes an SQLite database for storing and displaying data which add the funcionality to see the saved results by country.
 
 ## About the app
 
